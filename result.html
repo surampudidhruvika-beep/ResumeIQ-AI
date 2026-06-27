@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResumeIQ AI | Analysis Report</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="result-page">
+
+<div class="dashboard">
+
+    <div class="top-card">
+        <h1><i class="fa-solid fa-brain"></i> ResumeIQ AI Report</h1>
+        <p><strong>Uploaded Resume:</strong> {{ filename }}</p>
+    </div>
+
+    <div class="score-card">
+
+        <h2>ATS Resume Score</h2>
+
+        <div class="big-score">
+            {{ score }}<span>/100</span>
+        </div>
+
+        <div class="progress">
+            <div class="progress-fill" style="width: {{ score }}%;"></div>
+        </div>
+
+    </div>
+
+    <div class="summary-grid">
+
+        <div class="summary-box">
+            <i class="fa-solid fa-file-lines"></i>
+            <h3>Resume</h3>
+            <p>Uploaded</p>
+        </div>
+
+        <div class="summary-box">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>ATS Score</h3>
+            <p>{{ score }}/100</p>
+        </div>
+
+        <div class="summary-box">
+            <i class="fa-solid fa-robot"></i>
+            <h3>AI Review</h3>
+            <p>Completed</p>
+        </div>
+
+        <div class="summary-box">
+            <i class="fa-solid fa-circle-check"></i>
+            <h3>Status</h3>
+            <p>Success</p>
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>
+            <i class="fa-solid fa-chart-pie"></i>
+            ATS Breakdown
+        </h2>
+
+        <table class="score-table">
+
+            <tr>
+                <th>Category</th>
+                <th>Score</th>
+            </tr>
+
+            <tr>
+                <td>ATS Compatibility</td>
+                <td>{{ category_scores["ATS Compatibility"] }}/20</td>
+            </tr>
+
+            <tr>
+                <td>Education</td>
+                <td>{{ category_scores["Education"] }}/10</td>
+            </tr>
+
+            <tr>
+                <td>Technical Skills</td>
+                <td>{{ category_scores["Technical Skills"] }}/20</td>
+            </tr>
+
+            <tr>
+                <td>Projects</td>
+                <td>{{ category_scores["Projects"] }}/20</td>
+            </tr>
+
+            <tr>
+                <td>Certifications</td>
+                <td>{{ category_scores["Certifications"] }}/10</td>
+            </tr>
+
+            <tr>
+                <td>Achievements</td>
+                <td>{{ category_scores["Achievements"] }}/10</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <h2>
+                <i class="fa-solid fa-lightbulb"></i>
+                Suggestions
+            </h2>
+
+            {% if feedback %}
+
+            <ul>
+
+                {% for item in feedback %}
+
+                <li>{{ item }}</li>
+
+                {% endfor %}
+
+            </ul>
+
+            {% else %}
+
+            <p>Your resume looks excellent.</p>
+
+            {% endif %}
+
+        </div>
+
+        <div class="card">
+
+            <h2>
+                <i class="fa-solid fa-robot"></i>
+                AI Review
+            </h2>
+
+            <div class="ai-review">
+
+                <pre>{{ ai_feedback }}</pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <a href="/" class="btn-primary">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Analyze Another Resume
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

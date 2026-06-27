@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register - ResumeIQ</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+
+<body class="auth-body">
+
+<div class="auth-container">
+
+    <div class="auth-card">
+
+        <!-- Header -->
+        <div class="auth-header">
+            <i class="fa-solid fa-user-plus"></i>
+            <h2>Create Account</h2>
+            <p>Join ResumeIQ AI Platform</p>
+        </div>
+
+        <!-- FORM -->
+        <form method="POST" class="auth-form">
+
+            <!-- USERNAME -->
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="username" placeholder="Username" required>
+            </div>
+
+            <!-- PASSWORD -->
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" name="password" placeholder="Password" required>
+            </div>
+
+            <!-- BUTTON -->
+            <button type="submit" class="auth-btn">
+                Register
+            </button>
+
+        </form>
+
+        <!-- FOOTER -->
+        <p class="auth-footer">
+            Already have an account?
+            <a href="/login">Login</a>
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>
